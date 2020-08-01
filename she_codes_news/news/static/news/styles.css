@@ -84,3 +84,15 @@
     margin: 0 0 10px 10px;
     width: 50%;
 }
+
+/* Add story form styling */
+#story-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#story-form p {
+    display: flex;
+    justify-content: space-evenly;
+}
