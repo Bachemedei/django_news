@@ -10,10 +10,6 @@
 <form action="" id="story-form" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <!-- {% for field in form %}
-    <label class="label_class" for="{{ field.auto_id}}">{{ field.lebel }}</label>
-    {{ field }}
-{% endfor %} -->
     <input type="submit" value="submit">
 </form>
 {% endblock %}

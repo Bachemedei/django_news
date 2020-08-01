@@ -11,19 +11,16 @@ header {
     border-bottom: 1px solid #000;
 }
 
-img {
-    filter: grayscale(100%);
-}
 
 h1 {
-    font-family: 'Montserrat Subrayada', sans-serif;
+    font-family: 'News Cycle', sans-serif;
     text-decoration: none;
     font-size: 4rem;
     margin: 0;
 }
 
 h2 {
-   font-family: 'Montserrat Subrayada', sans-serif; 
+    font-family: 'News Cycle', sans-serif;
 }
 
 h3 {
@@ -50,5 +47,5 @@ a {
 }
 
 a, p {
-    font-family: monospace;
+    font-family: 'News Cycle', sans-serif;
 }
