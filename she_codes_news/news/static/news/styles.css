@@ -95,4 +95,13 @@
 #story-form p {
     display: flex;
     align-items: center;
+    width: 80% ;
+}
+
+#story-form p label {
+    flex-basis: 4rem;
+}
+
+#story-form p input {
+    flex: 2;
 }
