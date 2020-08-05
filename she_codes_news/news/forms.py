@@ -14,7 +14,7 @@ class StoryForm(ModelForm):
     )
     class Meta:
         model = NewsStory
-        fields = ['title', 'author', 'pub_date', 'content', 'image']
+        fields = ['title', 'pub_date', 'content', 'image']
         labels = {
             'image' : _('Image (URL)'),
         }

@@ -1,1 +1,46 @@
-[{"model": "news.newsstory", "pk": 14, "fields": {"title": "Sushi has a sleep", "author": "Bronwyn", "pub_date": "2020-08-01T06:05:00Z", "content": "Sushi decided to have a sleep in her favourite soft bed. \r\n\r\nIt was a good sleep.", "image": "https://i.imgur.com/wsUIdl5.jpg"}}, {"model": "news.newsstory", "pk": 15, "fields": {"title": "Cricket makes a friend", "author": "Bronwyn", "pub_date": "2020-08-01T08:23:00Z", "content": "Cricket made a new friend at daycare today.", "image": "https://i.imgur.com/pOSlHmP.jpg"}}, {"model": "news.newsstory", "pk": 16, "fields": {"title": "Squid finds a good pillow", "author": "Bronwyn", "pub_date": "2020-08-01T06:26:00Z", "content": "Squid found a very comfy fluffy pillow. It wriggled a bit though....", "image": "https://i.imgur.com/hS8GuxJ.jpg"}}, {"model": "news.newsstory", "pk": 17, "fields": {"title": "Cricket & Sushi finally have a hug", "author": "Bronwyn", "pub_date": "2020-08-01T12:27:00Z", "content": "After a contentious start to the relationship, Cricket & Sushi are now great pals.", "image": "https://i.imgur.com/xpaellB.jpg"}}]
+[
+    {
+        "model": "news.newsstory",
+        "pk": 14,
+        "fields": {
+            "title": "Sushi has a sleep",
+            "author": 1,
+            "pub_date": "2020-08-01T06:05:00Z",
+            "content": "Sushi decided to have a sleep in her favourite soft bed. \r\n\r\nIt was a good sleep.",
+            "image": "https://i.imgur.com/wsUIdl5.jpg"
+        }
+    },
+    {
+        "model": "news.newsstory",
+        "pk": 15,
+        "fields": {
+            "title": "Cricket makes a friend",
+            "author": 1,
+            "pub_date": "2020-08-01T08:23:00Z",
+            "content": "Cricket made a new friend at daycare today.",
+            "image": "https://i.imgur.com/pOSlHmP.jpg"
+        }
+    },
+    {
+        "model": "news.newsstory",
+        "pk": 16,
+        "fields": {
+            "title": "Squid finds a good pillow",
+            "author": 1,
+            "pub_date": "2020-08-01T06:26:00Z",
+            "content": "Squid found a very comfy fluffy pillow. It wriggled a bit though....",
+            "image": "https://i.imgur.com/hS8GuxJ.jpg"
+        }
+    },
+    {
+        "model": "news.newsstory",
+        "pk": 17,
+        "fields": {
+            "title": "Cricket & Sushi finally have a hug",
+            "author": 1,
+            "pub_date": "2020-08-01T12:27:00Z",
+            "content": "After a contentious start to the relationship, Cricket & Sushi are now great pals.",
+            "image": "https://i.imgur.com/xpaellB.jpg"
+        }
+    }
+]

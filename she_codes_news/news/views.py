@@ -1,14 +1,19 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
 from .forms import StoryForm
 
 
-class AddStoryView(generic.CreateView):
+class AddStoryView(LoginRequiredMixin, generic.CreateView):
     form_class = StoryForm
     context_object_name = 'storyForm'
     template_name = 'news/createStory.html'
     success_url = reverse_lazy("news:index")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
