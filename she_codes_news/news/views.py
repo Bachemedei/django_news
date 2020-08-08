@@ -32,3 +32,9 @@ class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
+
+class DeleteStory(LoginRequiredMixin, generic.DeleteView):
+    success_url = reverse_lazy("users:userProfile", kwargs= {'Deleted': True})
+    def get_queryset(self):
+        return NewsStory.objects.filter(author=self.request.user)
+

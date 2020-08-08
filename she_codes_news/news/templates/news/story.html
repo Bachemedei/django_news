@@ -12,6 +12,12 @@
     <div id="story-content">
         <img src="{{ story.image }}">
         {{ story.content|linebreaks }}
+        {% if user.is_authenticated and request.user == story.author %}
+            <form action="{% url 'news:deleteStory' story.pk %}"  method="POST">
+                {% csrf_token %}
+                <button type="submit">Delete</button>
+            </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
