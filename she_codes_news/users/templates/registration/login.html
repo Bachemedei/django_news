@@ -7,6 +7,7 @@
 <form method='post'>
     {% csrf_token %}
     {{ form.as_p }}
+    <h6>Don't have an account?<a href="{% url 'users:createAccount'%}">Create one here</a></h6>
     <button type='submit'>Login</button>
 </form>
 
