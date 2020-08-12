@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
@@ -37,10 +38,16 @@ class StoryView(generic.DetailView):
 
 class DeleteStory(LoginRequiredMixin, generic.DeleteView):
     model = NewsStory
-    def get_success_url(self):
+    success_message = "%(title)s Deleted story"
+
+    def get_success_url(self):   
         storyId =self.kwargs['pk']
-        story = NewsStory.objects.get(pk=storyId)
+        story = self.get_object()
+        print(story)
         author = story.author.username
+        success_message = self.success_message % {'title': story.title}
+        messages.success(self.request, success_message)
+        print(success_message)
         return reverse_lazy("users:userProfile", kwargs = {'slug': author})
 
 class ViewUsersStories(generic.DetailView):
