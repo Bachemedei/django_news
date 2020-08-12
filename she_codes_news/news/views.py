@@ -38,7 +38,7 @@ class StoryView(generic.DetailView):
 
 class DeleteStory(LoginRequiredMixin, generic.DeleteView):
     model = NewsStory
-    success_message = "%(title)s Deleted story"
+    success_message = "Story: %(title)s has been deleted"
 
     def get_success_url(self):   
         storyId =self.kwargs['pk']

@@ -8,6 +8,8 @@
         <meta name="description" content="">
         <meta name="author" content="Bronwyn Achemedei">
         <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
+        <!-- mustard ui -->
+        <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
         {% block stylesheets %}{% endblock %}
     </head>
@@ -25,11 +27,13 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <p class="alert alert-success">
+            {% if message.tags %} {% endif %}{{ message }}
+            </p>
             {% endfor %}
         </ul>
         {% endif %}
-        
+
         {% block content %}{% endblock %}
     </body>
 </html>
