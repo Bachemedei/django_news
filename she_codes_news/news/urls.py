@@ -8,4 +8,5 @@ urlpatterns = [
     path('<int:pk>/', views.StoryView.as_view(), name='story'),
     path('add-story/', views.AddStoryView.as_view(), name='newStory'),
     path('<int:pk>/delete/', views.DeleteStory.as_view(), name='deleteStory'),
+    path('author/<str:slug>/', views.ViewUsersStories.as_view(), name='usersStories')
 ]

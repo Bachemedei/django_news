@@ -1,7 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import NewsStory
+from users.models import CustomUser
 from .forms import StoryForm
 
 
@@ -34,7 +36,15 @@ class StoryView(generic.DetailView):
     context_object_name = 'story'
 
 class DeleteStory(LoginRequiredMixin, generic.DeleteView):
-    success_url = reverse_lazy("users:userProfile", kwargs= {'Deleted': True})
-    def get_queryset(self):
-        return NewsStory.objects.filter(author=self.request.user)
+    model = NewsStory
+    def get_success_url(self):
+        storyId =self.kwargs['pk']
+        story = NewsStory.objects.get(pk=storyId)
+        author = story.author.username
+        return reverse_lazy("users:userProfile", kwargs = {'slug': author})
 
+class ViewUsersStories(generic.DetailView):
+    model = CustomUser
+    template_name = 'news/usersStories.html'
+    context_object_name = 'user'
+    slug_field = 'username'

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div id="all-stories">
+    {% for story in object.stories.all %}
+        {% include "news/storyCard.html" with story=story  %}
+    {% endfor %}
+</div>
+{% endblock %}
