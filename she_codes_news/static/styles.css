@@ -120,6 +120,10 @@ html{
     font-family: 'News Cycle', sans-serif;
     color: red;
 }
+
+.messages {
+    padding: 0
+}
 /* .alert-success {
     background-color: lightgreen;
 }
