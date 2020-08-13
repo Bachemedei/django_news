@@ -29,11 +29,19 @@ class UpdateStoryView(UserPassesTestMixin, generic.UpdateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
     
+    def get_form_kwargs(self):
+        """Return the keyword arguments for instantiating the form."""
+        kwargs = super().get_form_kwargs()
+        kwargs.update({'instance': self.get_object()})
+        return kwargs
+
     def test_func(self):
-            story = self.get_object()
-            if self.request.user == story.author:
-                return True
-            return False
+        story = self.get_object()
+        if self.request.user == story.author:
+            return True
+        return False
+    
+
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'

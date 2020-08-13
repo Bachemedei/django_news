@@ -1,14 +1,22 @@
 <div class="story-card" id="story-card-{{ position }}">
     <a href="{% url 'news:story' story.id %}">
         {% if not story.image %}
-            <img src="https://picsum.photos/600">
+            <a href="{% url 'news:story' story.id %}"><img class=story-img src="https://picsum.photos/600"></a>
+            <!-- <img src="https://picsum.photos/600"> -->
         {% else %}
-            <img src="{{ story.image }}">
+            <a href="{% url 'news:story' story.id %}"><img class=story-img src="{{ story.image }}"></a>
+            <!-- <img src="{{ story.image }}"> -->
         {% endif %}
         <div class="story-card-text">
-            <h3>{{ story.title }}</h3>
-            <h4>{{ story.author }}</h4>
-            <h4>{{ story.pub_date }}</h4>
+            <h3>
+                <a href="{% url 'news:story' story.id %}">{{ story.title }}</a>
+            </h3>
+            <h4>
+                <a href="{% url 'news:usersStories' story.author.username %}">{{ story.author }}</a>
+            </h4>
+            <h4>
+                {{ story.pub_date }}
+            </h4>
         </div>
     </a>
 </div>

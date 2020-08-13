@@ -1,14 +1,22 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-
-<h2>Login</h2>
-
-<form method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <h6>Don't have an account?<a href="{% url 'users:createAccount'%}">Create one here</a></h6>
-    <button type='submit'>Login</button>
-</form>
+<div class="content-section">
+    <form method='post'>
+        {% csrf_token %}
+        <fieldset class=form-group>
+            <legend class="border-bottom mb-4">Login</legend>
+                {{ form|crispy }}
+            <div>
+                <button type='submit' class="btn btn-outline-info" id="login-btn">Login</button>
+            </div>
+            <div class="border-top pt-3">
+                <small class="text-muted">
+                    Don't have an account? <a class="ml-2" href="{% url 'users:createAccount'%}">Create one here</a>
+                </small>
+            </div>
+        </fieldset>
+    </form>
+</div>
 
 {% endblock %}

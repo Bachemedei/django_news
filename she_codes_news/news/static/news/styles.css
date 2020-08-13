@@ -4,7 +4,7 @@
     padding: 5px;
 }
 
-.story-card img {
+.story-card a img {
     width: 100%;
     height: 300px;
     object-fit: cover;
@@ -86,22 +86,21 @@
 }
 
 /* Add story form styling */
-#story-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+#story-btn {
+    margin-top: 1%;
 }
 
-#story-form p {
-    display: flex;
-    align-items: center;
-    width: 80% ;
+#story-btns {
+    display:flex;
+    justify-content: space-between;
+    width: 11rem;
 }
 
-#story-form p label {
-    flex-basis: 4rem;
+#edit-btn {
+    margin-bottom: 1%;
+    width: 5rem;
 }
 
-#story-form p input {
-    flex: 2;
+#delete-btn {
+    width: 5rem;
 }

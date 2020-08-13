@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 {% block content %}
-
-<form action="" id="story-form" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="submit">
-</form>
+<div class="content-section">
+    <form action="" id="story-form" method="post">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form|crispy }}
+            <div class="form-group">
+                <button type="submit" id="story-btn" class="btn btn-outline-info">Submit</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
 {% endblock %}

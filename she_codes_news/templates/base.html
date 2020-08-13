@@ -8,10 +8,11 @@
         <meta name="description" content="">
         <meta name="author" content="Bronwyn Achemedei">
         <link href="https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap" rel="stylesheet">
-        <!-- mustard ui -->
-        <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-        {% block stylesheets %}{% endblock %}
+         <!-- bootstrap -->
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+        {% block stylesheets %}
+        {% endblock %}
     </head>
 
     <body>
@@ -27,13 +28,12 @@
         {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <p class="alert alert-success">
-            {% if message.tags %} {% endif %}{{ message }}
+            <p class="alert alert-{{ message.tags }}">
+                {% if message.tags %} {% endif %}{{ message }}
             </p>
             {% endfor %}
         </ul>
         {% endif %}
-
         {% block content %}{% endblock %}
     </body>
 </html>
