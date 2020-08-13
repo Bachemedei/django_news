@@ -6,6 +6,8 @@
 {% endblock %}
 
 {% block content %}
+<!-- seeing if this request makes edit button work -->
+{{ request.GET.Edit }}
     {% if user.is_authenticated %}
         <a href="{% url 'news:newStory' %}">Write New Story</a>
     {% else %}

@@ -13,6 +13,14 @@
         <img src="{{ story.image }}">
         {{ story.content|linebreaks }}
         {% if user.is_authenticated and request.user == story.author %}
+        <!-- link for editing stories works fine -->
+        <a href="{% url 'news:updateStory' story.pk %}">Edit</a>
+        <!-- button for editing stories does not -->
+            <form action="{% url 'news:updateStory' story.pk %}"  method="POST">
+                {% csrf_token %}
+                <button type="submit">Edit</button>
+            </form>
+        <!-- button for deleting stories works fine -->
             <form action="{% url 'news:deleteStory' story.pk %}"  method="POST">
                 {% csrf_token %}
                 <button type="submit">Delete</button>

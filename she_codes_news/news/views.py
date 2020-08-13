@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.views import generic
@@ -18,6 +18,23 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class UpdateStoryView(UserPassesTestMixin, generic.UpdateView):
+    model = NewsStory
+    form_class = StoryForm
+    context_object_name = 'storyForm'
+    template_name = 'news/createStory.html'
+    success_url = reverse_lazy("news:index")
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+            story = self.get_object()
+            if self.request.user == story.author:
+                return True
+            return False
+
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
 
@@ -36,9 +53,15 @@ class StoryView(generic.DetailView):
     template_name = 'news/story.html'
     context_object_name = 'story'
 
-class DeleteStory(LoginRequiredMixin, generic.DeleteView):
+class DeleteStory(UserPassesTestMixin, generic.DeleteView):
     model = NewsStory
     success_message = "Story: %(title)s has been deleted"
+
+    def test_func(self):
+        story = self.get_object()
+        if self.request.user == story.author:
+            return True
+        return False
 
     def get_success_url(self):   
         storyId =self.kwargs['pk']

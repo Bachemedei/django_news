@@ -48,6 +48,7 @@ a {
     margin: 2px;
     text-decoration: none;
     color: #000;
+    transition: opacity .1s ease-out;
 }
 
 a, p {
@@ -63,3 +64,4 @@ a, p {
     padding: 15px; 
     border-radius: 5px;
 }
+

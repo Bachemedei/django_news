@@ -18,4 +18,9 @@ class StoryForm(ModelForm):
         labels = {
             'image' : _('Image (URL)'),
         }
+        widgets = {
+            'title' : forms.TextInput(attrs={'placeholder': 'Title'}),
+            'content' : forms.Textarea(attrs={'placeholder': 'Story Content'}),
+            'image' : forms.URLInput(attrs={'placeholder': 'Image URL'})
+        }
 
