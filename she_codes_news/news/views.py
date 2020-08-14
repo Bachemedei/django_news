@@ -86,3 +86,4 @@ class ViewUsersStories(generic.DetailView):
     template_name = 'news/usersStories.html'
     context_object_name = 'user'
     slug_field = 'username'
+    

@@ -21,11 +21,12 @@ h1 {
     margin: 0;
 }
 
-h2 {
+h2, h4, h5, h6 {
     font-family: 'News Cycle', sans-serif;
 }
 
 h3 {
+    font-family: 'News Cycle', sans-serif;
     font-size: 2rem;
     margin: 0;
 }

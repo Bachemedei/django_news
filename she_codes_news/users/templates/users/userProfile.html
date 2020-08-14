@@ -2,19 +2,28 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
 
 {% block content %}
-{{ request.GET.Delete }}
-<div id="profile-wrapper">
-    <h2>{{ user.username }}</h2>
-    <h4>{{ user.email }}</h4>
-</div>
-<div id="all-stories">
-    {% for story in object.stories.all %}
-        {% include "news/storyCard.html" with story=story  %}
-    {% endfor %}
-</div>
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'news:newStory' %}">Write New Story</a>
+    {% else %}
+        <a href="{% url 'users:createAccount' %}">Become A Contributor</a>
+    {% endif %}
+    {{ request.GET.Delete }}
+    <div id="profile-wrapper">
+        <p>
+            <h2>Your Details:</h2>
+            <h4>Username: {{ user.username }}</h4>
+            <h4>Email: {{ user.email }}</h4>
+            <h5>Bio: {{user.bio }}</h4>
+        </p>
+    </div>
+    <div id="all-stories">
+        {% for story in object.stories.all %}
+            {% include "news/storyCard.html" with story=story  %}
+        {% endfor %}
+    </div>
 {% endblock %}

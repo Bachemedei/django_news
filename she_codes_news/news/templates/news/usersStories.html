@@ -2,13 +2,22 @@
 {% load static %}
 
 {% block stylesheets %}
-<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+    {% endblock %}
 
-{% block content %}
-<div id="all-stories">
-    {% for story in object.stories.all %}
-        {% include "news/storyCard.html" with story=story  %}
-    {% endfor %}
-</div>
+    {% block content %}
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'news:newStory' %}">Write New Story</a>
+    {% else %}
+        <a href="{% url 'users:createAccount' %}">Become A Contributor</a>
+    {% endif %}
+    <div>
+        <h3>Stories by author: {{ user.username }}</h3>
+        <h4> Author Bio: {{ user.bio }} </h4>
+    </div>
+    <div id="all-stories">
+        {% for story in object.stories.all %}
+            {% include "news/storyCard.html" with story=story  %}
+        {% endfor %}
+    </div>
 {% endblock %}

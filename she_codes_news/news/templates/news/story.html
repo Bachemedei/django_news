@@ -6,24 +6,30 @@
 {% endblock %}
 
 {% block content %}
-<div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <a href="{% url 'news:usersStories' story.author.username %}"><h4>{{ story.author }}</h4></a>
-    <div id="story-content">
-        <img src="{{ story.image }}">
-        {{ story.content|linebreaks }}
-        {% if user.is_authenticated and request.user == story.author %}
-            <div id=story-btns class="form-group">
-                <form action="{% url 'news:updateStory' story.pk %}"  method="GET">
-                    {% csrf_token %}
-                    <button id="edit-btn" class="btn btn-outline-info" type="submit">Edit</button>
-                </form>
-                <form action="{% url 'news:deleteStory' story.pk %}"  method="POST">
-                    {% csrf_token %}
-                    <button id="delete-btn" class="btn btn-outline-info" type="submit">Delete</button>
-                </form>
-            </div>
-        {% endif %}
+    {% if request.user.is_authenticated %}
+        <a href="{% url 'news:newStory' %}">Write New Story</a>
+    {% else %}
+        <a href="{% url 'users:createAccount' %}">Become A Contributor</a>
+    {% endif %}
+    <div id="story-wrapper">
+        <h2>{{ story.title }}</h2>
+        <a href="{% url 'news:usersStories' story.author.username %}"><h4>{{ story.author }}</h4></a>
+        <h4>{{ story.pub_date }}</h4>
+        <div id="story-content">
+            <img src="{{ story.image }}">
+            {{ story.content|linebreaks }}
+            {% if user.is_authenticated and request.user == story.author %}
+                <div id=story-btns class="form-group">
+                    <form action="{% url 'news:updateStory' story.pk %}"  method="GET">
+                        {% csrf_token %}
+                        <button id="edit-btn" class="btn btn-outline-info" type="submit">Edit</button>
+                    </form>
+                    <form action="{% url 'news:deleteStory' story.pk %}"  method="POST">
+                        {% csrf_token %}
+                        <button id="delete-btn" class="btn btn-outline-info" type="submit">Delete</button>
+                    </form>
+                </div>
+            {% endif %}
+        </div>
     </div>
-</div>
 {% endblock %}
